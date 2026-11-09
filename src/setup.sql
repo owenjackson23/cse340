@@ -54,5 +54,3 @@ VALUES
 (3, 'Senior Center Volunteer Day', 'Spend a day volunteering at the local senior center, assisting with activities and events.', '357 Poplar St, Hometown', '2024-09-20'),
 (3, 'Community Health Fair', 'Participate in organizing a health fair to provide free screenings and health education.', '468 Fir St, Hometown', '2024-10-30'),
 (3, 'Neighborhood Safety Workshop', 'Help conduct workshops on neighborhood safety and emergency preparedness.', '579 Hemlock St, Hometown', '2024-11-15');
-
-SELECT * FROM project;
