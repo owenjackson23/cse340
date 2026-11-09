@@ -8,19 +8,18 @@
         <ul class="main-list">
             <% projects.forEach(project=> { %>
                 <li>
+                    <p>
+                        Date: <%= project.date %>
+                    </p>
                     <strong>
                         <%= project.title %>
-                    </strong>
-                    <p>
-                        <%= project.organization_name %>
-                    </p>
-                    <p>
-                        <%= project.description %>
-                    </p>
-                    <p>Location: <%= project.location %>
-                    </p>
-                    <p>Date: <%= project.date %>
-                    </p>
+                    </strong> (<%= project.organization_name %>)
+                        <p>
+                            <%= project.description %>
+                        </p>
+                        <p>
+                            Location: <%= project.location %>
+                        </p>
                 </li>
                 <% }); %>
         </ul>
