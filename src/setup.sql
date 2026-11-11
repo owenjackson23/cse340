@@ -54,3 +54,66 @@ VALUES
 (3, 'Senior Center Volunteer Day', 'Spend a day volunteering at the local senior center, assisting with activities and events.', '357 Poplar St, Hometown', '2024-09-20'),
 (3, 'Community Health Fair', 'Participate in organizing a health fair to provide free screenings and health education.', '468 Fir St, Hometown', '2024-10-30'),
 (3, 'Neighborhood Safety Workshop', 'Help conduct workshops on neighborhood safety and emergency preparedness.', '579 Hemlock St, Hometown', '2024-11-15');
+
+
+
+
+-- ========================================
+-- Categories Table
+-- ========================================
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+    category_name varchar(100) NOT NULL UNIQUE
+);
+
+-- ========================================
+-- Project Category Joining Table
+-- ========================================
+CREATE TABLE project_category (
+	project_id INT NOT NULL,
+	category_id INT NOT NULL,
+
+	PRIMARY KEY (project_id, category_id),
+
+	FOREIGN KEY (project_id)
+		REFERENCES project(project_id)
+		ON DELETE CASCADE,
+
+	FOREIGN KEY (category_id)
+		REFERENCES category(category_id)
+		ON DELETE CASCADE
+);
+
+-- -- ========================================
+-- -- Insert sample data: Categories
+-- -- ========================================
+INSERT INTO category (category_name)
+VALUES
+	('Education'),
+	('Community Service'),
+	('Environmental')
+	;
+
+-- -- ========================================
+-- -- Insert sample data: Project Category
+-- -- ========================================
+INSERT INTO project_category (project_id, category_id)
+VALUES
+	(1, 2), -- Community Service
+	(2, 2), -- Community Service
+	(2, 3), -- Environmental
+	(3, 2), -- Community Service
+	(4, 1), -- Education
+	(4, 3), -- Environmental
+	(5, 1), -- Education
+	(6, 3), -- Environmental
+	(7, 3), -- Environmental
+	(8, 2), -- Community Service
+	(9, 3), -- Environmental
+	(10, 1), -- Education
+	(11, 2), -- Community Service
+	(12, 2), -- Community Service
+	(13, 2), -- Community Service
+	(14, 1), -- Education
+	(15, 1)  -- Community Service
+	;
