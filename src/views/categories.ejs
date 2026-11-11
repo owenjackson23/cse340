@@ -5,10 +5,13 @@
             <%= title %>
         </h1>
         <ul class="main-list">
-            <li>Environmental</li>
-            <li>Educational</li>
-            <li>Community Service</li>
-            <li>Health and Wellness</li>
+            <% categories.forEach(category=> { %>
+                <li>
+                    <strong>
+                        <%= category.category_name %>
+                    </strong>
+                </li>
+                <% }); %>
         </ul>
     </main>
 
