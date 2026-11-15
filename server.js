@@ -73,6 +73,13 @@ app.get('/categories', async (req, res) => {
     res.render('categories', { title, categories });
 });
 
+// Catch-all route for 404 errors
+app.use((req, res, next) => {
+    const err = new Error('Page Not Found');
+    err.status = 404;
+    next(err);
+});
+
 // Start server
 // Listen for requests on PORT
 app.listen(PORT, async () => {
