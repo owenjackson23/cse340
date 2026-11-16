@@ -7,4 +7,4 @@ export const showOrganizationsPage = async (req, res) => {
     res.render('organizations', { title, organizations });
 };
 
-export { showOrganizationsPage };
+// export { showOrganizationsPage };
