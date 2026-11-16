@@ -66,7 +66,7 @@ const getProjectDetails = async (id) => {
             project.description,
             date,
             location,
-            organization_id,
+            project.organization_id,
             name AS organization_name
         FROM public.project
             JOIN public.organization
