@@ -71,14 +71,13 @@ const getProjectDetails = async (id) => {
         FROM public.project
             JOIN public.organization
                 ON project.organization_id = organization.organization_id
-        WHERE project_id = $1
-        LIMIT 1;
+        WHERE project_id = $1;
         `;
 
     const queryParams = [id];
     const result = await db.query(query, queryParams);
 
-    return result.rows;
+    return result.rows[0];
 };
 
 export { getAllProjects, getProjectsByOrganizationId, getUpcomingProjects, getProjectDetails };
