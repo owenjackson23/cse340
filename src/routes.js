@@ -1,3 +1,18 @@
-import { organizationsPage } from './controllers/organizations.js';
+import express from 'express';
 
-app.get('/organizations', organizationsPage);
+import { showHomePage } from './controllers/index.js';
+import { showOrganizationsPage } from './controllers/organizations.js';
+import { showProjectsPage } from './controllers/projects.js';
+import { showCategoriesPage } from './controllers/categories.js';
+import { testErrorPage } from './controllers/error.js';
+
+const router = express.Router();
+
+router.get('/', showHomePage);
+router.get('/organizations', showOrganizationsPage);
+router.get('/projects', showProjectsPage);
+router.get('/categories', showCategoriesPage);
+
+router.get('/test-error', testErrorPage);
+
+export default router;
