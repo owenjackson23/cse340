@@ -1,3 +1,5 @@
+import { getAllOrganizations } from '../models/organizations.js';
+
 export const organizationsPage = async (req, res) => {
     const organizations = await getAllOrganizations();
     const title = 'Our Partner Organizations';
