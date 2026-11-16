@@ -48,19 +48,11 @@ app.use((req, res, next) => {
 /**
  * Routes
  */
-app.get('/', async (req, res) => {
-    const title = 'Home';
-    res.render('home', { title });
-});
+// Home
 
-app.get('/organizations', organizationsPage);
+// Organizations
 
-app.get('/projects', async (req, res) => {
-    const projects = await getAllProjects();
-    const title = 'Service Projects';
-
-    res.render('projects', { title, projects });
-});
+// Projects
 
 app.get('/categories', async (req, res) => {
     const categories = await getAllCategories();
