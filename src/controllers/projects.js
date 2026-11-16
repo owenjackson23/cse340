@@ -9,4 +9,12 @@ const showProjectsPage = async (req, res) => {
     res.render('projects', { title, projects });
 };
 
-export { showProjectsPage };
+const showProjectDetailsPage = async (req, res) => {
+    const projectId = req.params.id;
+    const projectDetails = await getProjectDetails(projectId);
+    const title = 'Project Details';
+
+    res.render('project', { title, projectDetails });
+};
+
+export { showProjectsPage, showProjectDetailsPage };
