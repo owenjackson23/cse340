@@ -2,9 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './models/db.js';
-import { organizationsPage } from './controllers/organizations.js';
-import { getAllProjects } from './models/projects.js';
-import { getAllCategories } from './models/categories.js';
+import router from './src/routes.js';
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
@@ -23,7 +21,7 @@ const app = express();
   */
 
 // Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
@@ -48,15 +46,7 @@ app.use((req, res, next) => {
 /**
  * Routes
  */
-// Home
-
-// Organizations
-
-// Projects
-
-// Categories
-
-// Test route for 500 errors
+app.use(router);
 
 // Catch-all route for 404 errors
 app.use((req, res, next) => {
