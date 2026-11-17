@@ -7,9 +7,9 @@
         <ul class="main-list">
             <% categories.forEach(category=> { %>
                 <li>
-                    <strong>
+                    <a href="/category/<%= category.category_id %>">
                         <%= category.category_name %>
-                    </strong>
+                    </a>
                 </li>
                 <% }); %>
         </ul>
