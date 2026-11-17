@@ -5,16 +5,19 @@
             <%= projectDetails.title %>
         </h1>
 
-        <p>Description: <%= projectDetails.description %>
+        <p><strong>Description:</strong>
+            <%= projectDetails.description %>
         </p>
 
-        <p>Date: <%= projectDetails.date %>
+        <p><strong>Date:</strong>
+            <%= projectDetails.date %>
         </p>
 
-        <p>Location: <%= projectDetails.location %>
+        <p><strong>Location:</strong>
+            <%= projectDetails.location %>
         </p>
 
-        <p>Organization: <a href="/organization/<%= projectDetails.organization_id %>">
+        <p><strong>Organization:</strong> <a href="/organization/<%= projectDetails.organization_id %>">
                 <%= projectDetails.organization_name %>
             </a></p>
 
