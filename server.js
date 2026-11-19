@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
@@ -16,9 +17,19 @@ const __dirname = path.dirname(__filename);
 // Create Express application instance
 const app = express();
 
+const SESSION_SECRET = process.env.SESSION_SECRET;
+
 /**
   * Configure Express middleware
   */
+
+// Set up session management
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 } // Session expires after 1 hour of inactivity
+}));
 
 // Allow Express to receive and process common POST data
 app.use(express.urlencoded({ extended: true }));
