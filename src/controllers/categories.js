@@ -1,4 +1,5 @@
 import { getAllCategories, getCategoryDetails, getProjectsByCategory, getProjectCategories, updateCategoryAssignments } from '../models/categories.js';
+import { getProjectDetails } from '../models/projects.js';
 
 const showCategoriesPage = async (req, res) => {
     const categories = await getAllCategories();
