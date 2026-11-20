@@ -21,6 +21,7 @@ router.post('/new-organization', organizationValidation, processNewOrganizationF
 router.get('/test-error', testErrorPage);
 
 router.get('/organization/:id', showOrganizationDetailsPage);
+router.get('/edit-organization/:id', showEditOrganizationForm);
 router.get('/project/:id', showProjectDetailsPage);
 router.get('/category/:id', showCategoryDetailsPage);
 
