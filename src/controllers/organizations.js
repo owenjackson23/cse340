@@ -1,4 +1,4 @@
-import { getAllOrganizations, getOrganizationDetails, createOrganization } from '../models/organizations.js';
+import { getAllOrganizations, getOrganizationDetails, createOrganization, updateOrganization } from '../models/organizations.js';
 import { getProjectsByOrganizationId } from '../models/projects.js';
 import { body, validationResult } from 'express-validator';
 
