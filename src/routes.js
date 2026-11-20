@@ -22,7 +22,7 @@ router.get('/test-error', testErrorPage);
 
 router.get('/organization/:id', showOrganizationDetailsPage);
 router.get('/edit-organization/:id', showEditOrganizationForm);
-router.post('/edit-organization/:id', processEditOrganizationForm);
+router.post('/edit-organization/:id', organizationValidation, processEditOrganizationForm);
 router.get('/project/:id', showProjectDetailsPage);
 router.get('/category/:id', showCategoryDetailsPage);
 
