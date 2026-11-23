@@ -1,6 +1,17 @@
 import { getAllCategories, getCategoryDetails, getProjectsByCategory, getProjectCategories, updateCategoryAssignments, createCategory, updateCategory } from '../models/categories.js';
 import { getProjectDetails } from '../models/projects.js';
 
+// Define validation and sanitization rules for category form
+// Define validation rules for category form
+const categoryValidation = [
+    body('category_name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required')
+        .isLength({ min: 3, max: 150 })
+        .withMessage('Category name must be between 3 and 150 characters')
+];
+
 const showCategoriesPage = async (req, res) => {
     const categories = await getAllCategories();
     const title = 'Service Project Categories';
@@ -100,4 +111,4 @@ const processEditCategoryForm = async (req, res) => {
     res.redirect(`/category/${categoryId}`);
 };
 
-export { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm };
+export { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm, categoryValidation };
