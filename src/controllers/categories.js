@@ -1,4 +1,4 @@
-import { getAllCategories, getCategoryDetails, getProjectsByCategory, getProjectCategories, updateCategoryAssignments } from '../models/categories.js';
+import { getAllCategories, getCategoryDetails, getProjectsByCategory, getProjectCategories, updateCategoryAssignments, createCategory, updateCategory } from '../models/categories.js';
 import { getProjectDetails } from '../models/projects.js';
 
 const showCategoriesPage = async (req, res) => {
@@ -39,4 +39,33 @@ const processAssignCategoriesForm = async (req, res) => {
     res.redirect(`/project/${projectId}`);
 };
 
-export { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm };
+const showNewCategoryForm = async (req, res) => {
+    const title = 'Add New Category';
+
+    res.render('new-category', { title });
+};
+
+const processNewCategoryForm = async (req, res) => {
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the new category form
+        return res.redirect('/new-category');
+    }
+
+    const { category_name } = req.body;
+
+    const categoryId = await createCategory(category_name);
+
+    // Set a success flash message
+    req.flash('success', 'Category added successfully!');
+
+    res.redirect(`/category/${categoryId}`);
+};
+
+export { showCategoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm };
