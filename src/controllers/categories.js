@@ -1,5 +1,6 @@
 import { getAllCategories, getCategoryDetails, getProjectsByCategory, getProjectCategories, updateCategoryAssignments, createCategory, updateCategory } from '../models/categories.js';
 import { getProjectDetails } from '../models/projects.js';
+import { body, validationResult } from 'express-validator';
 
 // Define validation and sanitization rules for category form
 // Define validation rules for category form
