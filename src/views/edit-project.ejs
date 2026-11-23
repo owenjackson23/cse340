@@ -6,8 +6,9 @@
 
         <form action="/edit-project/<%= projectDetails.project_id %>" method="POST">
             <div class="form-group">
-                <label for="name">Project Name</label>
-                <input type="text" id="name" name="name" value="<%= projectDetails.title %>" maxlength="150" required />
+                <label for="title">Project Title</label>
+                <input type="text" id="title" name="title" maxlength="150" value="<%= projectDetails.title %>"
+                    required />
             </div>
 
             <div class="form-group">
