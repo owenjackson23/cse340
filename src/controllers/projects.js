@@ -30,6 +30,10 @@ const showProjectsPage = async (req, res) => {
     const projects = await getUpcomingProjects(NUMBER_OF_UPCOMING_PROJECTS);
     const title = 'Upcoming Service Projects';
 
+    projects.forEach(project => {
+        project.formattedDate = project.date.toDateString();
+    });
+
     res.render('projects', { title, projects });
 };
 
@@ -41,7 +45,10 @@ const showProjectDetailsPage = async (req, res) => {
 
     const title = 'Project Details';
 
-    res.render('project', { title, projectDetails, categories });
+    const projectDate = projectDetails.date
+        .toDateString();
+
+    res.render('project', { title, projectDetails, categories, projectDate });
 };
 
 const showNewProjectForm = async (req, res) => {
@@ -86,8 +93,12 @@ const showEditProjectForm = async (req, res) => {
 
     const organizations = await getAllOrganizations();
 
+    const projectDate = projectDetails.date
+        .toISOString()
+        .split('T')[0]; // Format date for input field
+
     const title = 'Edit Project';
-    res.render('edit-project', { title, projectDetails, organizations });
+    res.render('edit-project', { title, projectDetails, organizations, projectDate });
 };
 
 const processEditProjectForm = async (req, res) => {
