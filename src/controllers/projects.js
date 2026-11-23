@@ -111,7 +111,7 @@ const processEditProjectForm = async (req, res) => {
     // Set a success flash message
     req.flash('success', 'Project updated successfully!');
 
-    res.redirect(`/organization/${organizationId}`);
+    res.redirect(`/project/${projectId}`);
 };
 
 export { showProjectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, showEditProjectForm, processEditProjectForm, projectValidation };
